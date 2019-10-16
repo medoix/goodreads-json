@@ -1,0 +1,41 @@
+{
+  "name": "goodreads-json",
+  "version": "0.0.1",
+  "description": "Third party GoodReads API returning JSON instead of XML",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ENV=development nodemon index.js",
+    "start": "node index.js",
+    "clean": "rm -rf dist",
+    "prepublish": "npm run build",
+    "build": "npm run clean && node_modules/.bin/babel src/ --out-dir dist",
+    "watch": "ENV=development && npm run clean && nodemon index.js --ignore dist --exec 'npm run build'",
+    "deploy": "now -e key=@key -e secret=@secret",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "goodreads",
+    "books",
+    "reading",
+    "api",
+    "micro service"
+  ],
+  "author": "medoix",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.23.1",
+    "body-parser": "^1.16.0",
+    "express": "^4.14.0",
+    "handlebars": "^4.0.6",
+    "hbs": "^4.0.1",
+    "node-fetch": "^1.7.3",
+    "xml2js": "^0.4.17"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-watch": "^2.0.8",
+    "gulp": "^4.0.2",
+    "node-env-file": "^0.1.8"
+  }
+}

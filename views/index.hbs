@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{>header}}
+<body>
+
+  <div class="container">
+    <h1 class="main-title">GoodReads JSON 📚</h1>
+    <p class="main-subtitle">Your books from Goodreads</p>
+    <div class="helper-section">
+
+      <div class="input-wrapper">
+        <p class="helper__title a-fade-in-up-low">GoodReads JSON serves two purposes: a <b>pretty profile page for your current reading selection</b> on Goodreads,
+and an <b>API microservice</b> that allows you to consume its API with a <code>JSON</code> response. As an example, <a href="/reading/85150139/currently-reading/">here's my current reading list and my <a href="/reading/85150139/to-read/">to read list.</a></p>
+      </div>
+
+      <div class="submit-wrapper a-fade-in-up-low a-delay-half">
+        <input placeholder="Your Goodreads ID or profile URL" id="input" type="text" class="input__field input__field--actives">
+        <label for="" class="input__label"></label>
+        <button class="button" id="get-books" type="button" name="button">Display my books</button>
+        <p class="helper__subtitle">Here's a <a href="/book/25667449">book example</a> and its <code><a href="/book/25667449/json">JSON</a></code> call, to get you started.</p>
+      </div>
+
+      <section class="endpoints-wrapper a-fade-in-up-low a-delay-1">
+        <div class="endpoints container container--api">
+          <h2>API Documentation</h2>
+          <p class="page-description">Only a few API methods are available, but unlike the official Goodreads API, they all return JSON results instead of XML. There's no need to provide a key, since it's using my own, so please be sensible about the requests you're making. 😘</p>
+          <p class="page-description">Alternatively, you could get the package that connects with the API and modify/extend it as you'd like, by going trough it.</p>
+          <div class="endpoint__item"></div>
+
+          <div class="endpoint__item">
+            <h4 class="endpoint__title">Currently Reading Shelf</h4>
+            <span class="endpoint__description">Returns a JSON response with the book details on a currently reading shelf.</span>
+            <p><pre class="endpoint__link">GET /reading/:userID/currently-reading/json</pre></p>
+          </div>
+
+          <div class="endpoint__item">
+            <h4 class="endpoint__title">To Read Shelf</h4>
+            <span class="endpoint__description">Returns a JSON response with the book details on the to read shelf.</span>
+            <p><pre class="endpoint__link">GET /reading/:userID/to-read/json</pre></p>
+          </div>
+
+          <div class="endpoint__item">
+            <h4 class="endpoint__title">Read Shelf</h4>
+            <span class="endpoint__description">Returns a JSON response with the book details on the read shelf.</span>
+            <p><pre class="endpoint__link">GET /reading/:userID/read/json</pre></p>
+          </div>
+
+          <div class="endpoint__item">
+            <h4 class="endpoint__title">Get book detail by ID</h4>
+            <span class="endpoint__description">Given a book ID, returns a JSON response with all the available information of a book.</span>
+            <p><pre class="endpoint__link">GET /book/:bookID/json</pre></p>
+          </div>
+
+          <div class="endpoint__item">
+            <h4 class="endpoint__title">Search books by author and title</h4>
+            <span class="endpoint__description">Given an author or/and a book title, displays a JSON response with all the search results.</span>
+            <p><pre class="endpoint__link">POST /search/book</pre></p>
+            <p><pre>{title |String|}</pre></p>
+            <p><pre>{author |String|}</pre></p>
+          </div>
+
+        </div>
+      </section>
+  </div>
+  <script src="../dist/home.js"></script>
+  {{!-- <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-000000', 'auto');
+  ga('send', 'pageview');
+  </script> --}}
+  {{>footer}}
+</body>
+</html>

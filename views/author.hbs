@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{>header}}
+<body>
+
+  <div class="container">
+    <header class="heading">
+      <a class="heading__link" href="/">
+        <h1 class="main-title">GoodReads JSON 📚</h1>
+        <p class="main-subtitle">Your books from Goodreads</p>
+      </a>
+      <div class="heading__aside">
+        <a class="pill-label" href="{{{author.id}}}/json">Get as JSON</a>
+      </div>
+
+    </header>
+
+    <div class="book__detail">
+      {{#if error}}
+        <h3>Oops, this author wasn't found. Try again?</h3>
+      {{/if}}
+      {{#if author}}
+
+      <div class="book-item">
+        <img class="author__image" src="{{{ author.image_url }}}" alt="">
+        <div class="item-details">
+          <h3 class="book__title book__title--detail">{{ author.name }}</h3>
+          <p class="author__fans">{{ author.fans_count.0._ }} fans</p>
+          {{#if author.about}}
+            <div class="book__description">{{{ author.about }}}</div>
+          {{else}}
+            <div class="book__description">This author has no description yet. Head over to its profile page on Goodreads to learn more about it.</div>
+          {{/if}}
+        </div>
+
+      </div>
+      {{/if}}
+    </div>
+  </div>
+</body>
+
+<script type="text/javascript">
+</script>
+  {{>footer}}
+</html>
