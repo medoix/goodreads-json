@@ -3,13 +3,15 @@ const app = express();
 const path = require('path');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
-const env = require('node-env-file');
 const fetch = require('node-fetch');
 const xml2js = require('xml2js');
 const PORT = process.env.PORT || 3000;
 const api = require('./api');
 
-if (process.env.ENV === 'development') env(__dirname + '/.env');
+if (process.env.ENV === 'development') {
+  const env = require('node-env-file');
+  env(__dirname + '/.env');
+};
 
 hbs.registerHelper('hasLength', (ctx, opt) => ctx.length);
 
@@ -49,7 +51,6 @@ app.get('/book/:id/json', (req, res) => {
     .then(book => res.json(book))
     .catch(error => renderError(res, error));
 })
-
 app.get('/author/:id/', (req, res) => {
   apiClient.getAuthorById(req.params.id)
     .then(author => res.render('author', { author }))
