@@ -24,7 +24,7 @@ Index.prototype.extractID = function(val) {
 
 Index.prototype.getBooks = function(e) {
   if (this.goodreadsID) {
-    window.location = '/reading/' + this.goodreadsID;
+    window.location = '/reading/' + this.goodreadsID + '/currently-reading/';
   } else {
     this.inputFieldEl.focus();
   }
