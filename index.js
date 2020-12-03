@@ -1,10 +1,7 @@
 const express = require('express');
 const app = express();
-const path = require('path');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
-const fetch = require('node-fetch');
-const xml2js = require('xml2js');
 const PORT = process.env.PORT || 3000;
 const api = require('./api');
 
